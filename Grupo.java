@@ -25,4 +25,23 @@ public class Grupo {
         }
         return null;
     }
+
+    public int quantidadeAutores() {
+        return listaAutor.size();
+    }
+
+    public boolean autorExiste(int codigo) {
+        if(listaAutor.contains(pesquisaAutor(codigo)))
+            return true;
+        return false;
+    }
+
+    public String AutoresComLivros(){
+        String aux = "";
+        for(int i=0; i<listaAutor.size(); i++){
+            if(listaAutor.get(i).livros2Mais());
+                aux = aux + "9; " + listaAutor.get(i).getNome() + listaAutor.get(i).getIsbnLivrosEscritos() + "\n";
+        }
+        return aux;
+    }
 }

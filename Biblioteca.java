@@ -46,4 +46,26 @@ public class Biblioteca {
         return listaLivro.size();
     }
 
+    public boolean livroExiste(String isbn) {
+        if(listaLivro.contains(pesquisaLivro(isbn)))
+            return true;
+        return false;
+    }
+
+    public String livrosComAutores(){
+        String aux = "";
+        for(int i=0; i<listaLivro.size(); i++){
+            if(listaLivro.get(i).Autores2Mais());
+                aux = aux + "8; " + listaLivro.get(i).getTitulo() + "\n";
+        }
+        return aux;
+    }
+
+    public String livrosNoAno(int ano) {
+        String aux = "";
+        for(int i=0; i<pesquisaLivro(ano).size(); i++) {
+            aux = aux + "10; " + pesquisaLivro(ano).get(i).getIsbn() + "; " + pesquisaLivro(ano).get(i).getAno() + "; " + pesquisaLivro(ano).get(i).getAno() + "\n";
+    }
+    return aux;
+    }
 }

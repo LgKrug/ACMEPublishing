@@ -10,6 +10,7 @@ public class Autor {
         this.codigo = codigo;
         this.nome = nome;
         this.livrosEscritos = new ArrayList<Livro>();
+        livrosEscritos.add(livro);
     }
 
     public int getCodigo() {
@@ -20,6 +21,15 @@ public class Autor {
         return nome;
     }
 
+    public String getIsbnLivrosEscritos() {
+        String aux = "";
+        for( int i=0; i<livrosEscritos.size(); i++){
+            aux = aux  + livrosEscritos.get(i).getIsbn() + "; ";
+        }
+
+        return aux;
+    }
+
     public  boolean adicionaLivro(Livro livro) {
         if (livrosEscritos.contains(livro)) 
             return false;
@@ -28,6 +38,18 @@ public class Autor {
 
     public ArrayList<Livro> pesquisaLivros() {
         return livrosEscritos;
+    }
+
+    public String livrosToString(){
+        String aux = "";
+        for(int i =0; i < livrosEscritos.size(); i++){
+            aux = aux + "6; " + getCodigo() + " " + getNome() + " " + livrosEscritos.get(i).getIsbn() + " " + livrosEscritos.get(i).getTitulo() + " " + livrosEscritos.get(i).getAno() + "\n";
+        }
+        return aux;
+    }
+    
+    public boolean livros2Mais() {
+        return (livrosEscritos.size() > 1);
     }
 }
 

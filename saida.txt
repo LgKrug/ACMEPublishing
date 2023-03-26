@@ -1,0 +1,28 @@
+1;9786556901282;Estrutura de dados em Java;2021
+1;9781119851196;Concepts and semantics of programming languages 2: modular and object-oriented constructs with Ocaml, Python, C++, Ada and Java;2021
+1;9786556900216;Integracao de aplicacoes;2020
+2; 3
+3;111;Thiago Nascimento Rodrigues;9786556901282
+3;222;Thérèse Hardin;9781119851196
+3;333;Mathieu Jaume;9781119851196
+3;444;Francois Pessaux;9781119851196
+3;555;Véronique Donzeau-Gouge;9781119851196
+4; 5
+5; 111; Thiago Nascimento Rodrigues; 9786556900216; Integracao de aplicacoes; 2020
+5; 111; Thiago Nascimento Rodrigues; 9786556901282; Estrutura de dados em Java; 2021
+6; 444 Francois Pessaux 9781119851196 Concepts and semantics of programming languages 2: modular and object-oriented constructs with Ocaml, Python, C++, Ada and Java 2021
+
+7; 9781119851196; 
+8; Estrutura de dados em Java
+8; Concepts and semantics of programming languages 2: modular and object-oriented constructs with Ocaml, Python, C++, Ada and Java
+8; Integracao de aplicacoes
+
+9; Thiago Nascimento Rodrigues9786556901282; 9786556900216; 
+9; Thérèse Hardin9781119851196; 
+9; Mathieu Jaume9781119851196; 
+9; Francois Pessaux9781119851196; 
+9; Véronique Donzeau-Gouge9781119851196; 
+
+10; 9786556901282; 2021; 2021
+10; 9781119851196; 2021; 2021
+

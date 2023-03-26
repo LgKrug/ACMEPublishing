@@ -33,6 +33,16 @@ public class Livro {
         }
     }
 
-   
+    public String AutoresToString(){
+        String aux = "7; " + getIsbn() + "; ";
+        for(int i =0; i < autores.size(); i++){
+            aux = aux + autores.get(i).getNome();
+        }
+        return aux;
+    }
+
+    public boolean Autores2Mais() {
+        return (autores.size() > 1);
+    }
 
 }
