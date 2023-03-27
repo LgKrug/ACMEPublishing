@@ -6,28 +6,34 @@ import java.nio.charset.Charset;
 import java.util.Locale;
 import java.util.Scanner;
 
+import javax.management.openmbean.OpenDataException;
+
 
 public class ACMEPublishing {
     
     private Biblioteca biblioteca;
     private Grupo grupo;
-    private Scanner entrada = null; // Atributo para entrada de dados
+    private Scanner entrada = null;
+    private Scanner in;
+    private MenuFinal menu;
 
 
     public ACMEPublishing(){
         try {
             BufferedReader streamEntrada = new BufferedReader(new FileReader("dados.txt"));
-            entrada = new Scanner(streamEntrada); // Usa como entrada um arquivo
+            entrada = new Scanner(streamEntrada); 
             PrintStream streamSaida =
             new PrintStream (new File("saida.txt"), Charset.forName("UTF-8"));
-            System.setOut(streamSaida); // Usa como saida um arquivo
+            System.setOut(streamSaida); 
             } catch (Exception e) {
             System.out.println(e);
             }
             entrada.useLocale(Locale.ENGLISH);
-            // Implemente aqui o seu codigo adicional do construtor
+
         this.biblioteca = new Biblioteca();
         this.grupo = new Grupo();
+        this.in = new Scanner(System.in);
+        this.menu = new MenuFinal();
     }
 
     public void executar(){
@@ -36,6 +42,7 @@ public class ACMEPublishing {
         int ano;
         int codigo;
         String nome;
+        int opcao;
 
 
         do{
@@ -86,6 +93,26 @@ public class ACMEPublishing {
         mostraLivroComAutores();
         mostraAutoresComLivros();
         mostraLivrosAno();
+
+        
+        do{
+            menu.executar();
+            opcao = in.nextInt();
+
+            switch(opcao){
+                case 1:
+                    codigo = in.nextInt();
+                    in.nextLine();
+                    nome = in.nextLine();
+                    isbn = in.nextLine();
+                    cadastraAutor(codigo, nome, isbn);
+                    break;
+
+                case 2:
+                    break;
+            }
+        }while(opcao == 0);
+
     }
 
     public void cadastraLivros(String isbn, String titulo, int ano){
@@ -104,7 +131,7 @@ public class ACMEPublishing {
             Autor autor = new Autor(codigo,nome,biblioteca.pesquisaLivro(isbn));
 
             if(grupo.cadastraAutor(autor))
-            System.out.println("3;" + autor.getCodigo() + ";" + autor.getNome() + ";" + isbn);
+            System.out.println("3;" + autor.getCodigo() + ";" + autor.getNome() + ";" + biblioteca.pesquisaLivro(isbn).getIsbn());
     }
 
     public void mostraAutoresCadastrados(){

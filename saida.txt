@@ -26,3 +26,7 @@
 10; 9786556901282; 2021; 2021
 10; 9781119851196; 2021; 2021
 
+=====Menu=====
+[1] Cadastrar um novo autor e livro correspondente.
+[2] Mostrar todos os autores cadastrados e livros correspondentes.
+[0] Sair do sistema.
