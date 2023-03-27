@@ -107,12 +107,8 @@ public class ACMEPublishing {
                     isbn = in.nextLine();
                     cadastraAutor(codigo, nome, isbn);
                     break;
-
-                case 2:
-                    break;
             }
         }while(opcao == 0);
-
     }
 
     public void cadastraLivros(String isbn, String titulo, int ano){
@@ -131,7 +127,7 @@ public class ACMEPublishing {
             Autor autor = new Autor(codigo,nome,biblioteca.pesquisaLivro(isbn));
 
             if(grupo.cadastraAutor(autor))
-            System.out.println("3;" + autor.getCodigo() + ";" + autor.getNome() + ";" + biblioteca.pesquisaLivro(isbn).getIsbn());
+            System.out.println("3;" + autor.getCodigo() + ";" + autor.getNome() + ";" + isbn);
     }
 
     public void mostraAutoresCadastrados(){
