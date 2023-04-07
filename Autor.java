@@ -1,3 +1,4 @@
+import java.rmi.server.RemoteStub;
 import java.util.ArrayList;
 
 public class Autor {
@@ -21,6 +22,18 @@ public class Autor {
         return nome;
     }
 
+    public ArrayList<Livro> getLivros() {
+        return livrosEscritos;
+    }
+    public boolean livroJaEscrito(String isnb) {
+        for( int i = 0; i <livrosEscritos.size(); i++){
+            if(livrosEscritos.get(i).getIsbn().equals(isnb)){
+                return true;
+            }
+        }
+        return false;
+    }
+
     public String getIsbnLivrosEscritos() {
         String aux = "";
         for( int i=0; i<livrosEscritos.size(); i++){
@@ -40,12 +53,8 @@ public class Autor {
         return livrosEscritos;
     }
 
-    public String livrosToString(){
-        String aux = "";
-        for(int i =0; i < livrosEscritos.size(); i++){
-            aux = aux + "6; " + getCodigo() + " " + getNome() + " " + livrosEscritos.get(i).getIsbn() + " " + livrosEscritos.get(i).getTitulo() + " " + livrosEscritos.get(i).getAno() + "\n";
-        }
-        return aux;
+    public String livroToString(int i){
+        return getCodigo() + " " + getNome() + " " + livrosEscritos.get(i).getIsbn() + " " + livrosEscritos.get(i).getTitulo() + " " + livrosEscritos.get(i).getAno();
     }
     
     public boolean livros2Mais() {

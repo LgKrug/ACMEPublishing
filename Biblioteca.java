@@ -8,6 +8,10 @@ public class Biblioteca {
         this.listaLivro = new ArrayList<Livro>();
     }
 
+    public ArrayList<Livro> getListaLivro(){
+        return listaLivro;
+    }
+
     public  boolean cadastraLivro(Livro livro) {
         for(int i = 0; i < listaLivro.size(); i++){
             if(listaLivro.get(i).getIsbn().equals(livro.getIsbn()) ){
@@ -52,13 +56,8 @@ public class Biblioteca {
         return false;
     }
 
-    public String livrosComAutores(){
-        String aux = "";
-        for(int i=0; i<listaLivro.size(); i++){
-            if(listaLivro.get(i).Autores2Mais());
-                aux = aux + "8; " + listaLivro.get(i).getTitulo() + "\n";
-        }
-        return aux;
+    public String livrosComAutores(int i){
+        return listaLivro.get(i).getTitulo();
     }
 
     public String livrosNoAno(int ano) {

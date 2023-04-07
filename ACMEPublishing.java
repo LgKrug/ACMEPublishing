@@ -137,11 +137,13 @@ public class ACMEPublishing {
     public void addLivroAoAutor(int codigo, String isnb){
 
         if(grupo.autorExiste(codigo) && biblioteca.livroExiste(isnb)){
+            if(grupo.pesquisaAutor(codigo).livroJaEscrito(isnb) == false){
             grupo.pesquisaAutor(codigo).adicionaLivro(biblioteca.pesquisaLivro(isnb));
 
             System.out.println("5; " + grupo.pesquisaAutor(codigo).getCodigo() + "; " + grupo.pesquisaAutor(codigo).getNome() + 
             "; " + biblioteca.pesquisaLivro(isnb).getIsbn() + "; " + biblioteca.pesquisaLivro(isnb).getTitulo() + 
             "; " + biblioteca.pesquisaLivro(isnb).getAno());
+            }
         }
     }
 
@@ -149,7 +151,9 @@ public class ACMEPublishing {
         int codigo = entrada.nextInt();
         entrada.nextLine();
         if(grupo.autorExiste(codigo)){
-            System.out.println(grupo.pesquisaAutor(codigo).livrosToString());
+            for(int i=0; i<grupo.pesquisaAutor(codigo).getLivros().size(); i++){
+                System.out.println("6; " + grupo.pesquisaAutor(codigo).livroToString(i));
+            }
         }
     }
 
@@ -161,7 +165,10 @@ public class ACMEPublishing {
     }
 
     public void mostraLivroComAutores(){
-        System.out.println(biblioteca.livrosComAutores()); 
+        for(int i=0; i<biblioteca.getListaLivro().size(); i++){
+            System.out.println("8; " + biblioteca.livrosComAutores(i)); 
+        }
+        
     }
 
     public void mostraAutoresComLivros(){
