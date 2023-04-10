@@ -126,8 +126,10 @@ public class ACMEPublishing {
        
             Autor autor = new Autor(codigo,nome,biblioteca.pesquisaLivro(isbn));
 
-            if(grupo.cadastraAutor(autor))
+            if(grupo.cadastraAutor(autor)){
+                biblioteca.pesquisaLivro(isbn).adicionaAutor(autor);
             System.out.println("3;" + autor.getCodigo() + ";" + autor.getNome() + ";" + isbn);
+        }
     }
 
     public void mostraAutoresCadastrados(){
@@ -137,9 +139,9 @@ public class ACMEPublishing {
     public void addLivroAoAutor(int codigo, String isnb){
 
         if(grupo.autorExiste(codigo) && biblioteca.livroExiste(isnb)){
-            if(grupo.pesquisaAutor(codigo).livroJaEscrito(isnb) == false){
-            grupo.pesquisaAutor(codigo).adicionaLivro(biblioteca.pesquisaLivro(isnb));
-
+            if(grupo.pesquisaAutor(codigo).adicionaLivro(biblioteca.pesquisaLivro(isnb))){
+                biblioteca.pesquisaLivro(isnb).adicionaAutor(grupo.pesquisaAutor(codigo));
+            
             System.out.println("5; " + grupo.pesquisaAutor(codigo).getCodigo() + "; " + grupo.pesquisaAutor(codigo).getNome() + 
             "; " + biblioteca.pesquisaLivro(isnb).getIsbn() + "; " + biblioteca.pesquisaLivro(isnb).getTitulo() + 
             "; " + biblioteca.pesquisaLivro(isnb).getAno());
@@ -159,20 +161,28 @@ public class ACMEPublishing {
 
     public void mostraAutroresDoLivro(){
         String isbn = entrada.nextLine();
+        String aux = "7; " + isbn + "; ";
         if(biblioteca.livroExiste(isbn)){
-            System.out.println(biblioteca.pesquisaLivro(isbn).AutoresToString());
+            for(int i=0; i < biblioteca.pesquisaLivro(isbn).getAutorList().size(); i++){
+                aux = aux + biblioteca.pesquisaLivro(isbn).AutoresToString(i) + "; ";
+            }
+            System.out.println(aux);
         }
     }
 
     public void mostraLivroComAutores(){
         for(int i=0; i<biblioteca.getListaLivro().size(); i++){
+            if(biblioteca.getListaLivro().get(i).Autores2Mais())
             System.out.println("8; " + biblioteca.livrosComAutores(i)); 
         }
         
     }
 
     public void mostraAutoresComLivros(){
-        System.out.println(grupo.AutoresComLivros());
+        for(int i=0; i<grupo.getListaAutor().size(); i++){
+            if(grupo.getListaAutor().get(i).livros2Mais())
+            System.out.println("9; " + grupo.AutoresComLivros(i)); 
+        }
     }
 
     public void mostraLivrosAno() {

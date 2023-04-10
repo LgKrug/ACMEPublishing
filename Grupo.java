@@ -7,6 +7,10 @@ public class Grupo {
         this.listaAutor = new ArrayList<Autor>();
     }
 
+    public ArrayList<Autor> getListaAutor(){
+        return listaAutor;
+    }
+
     public  boolean cadastraAutor(Autor autor){ 
         for(int i = 0; i < listaAutor.size(); i++){
             if(listaAutor.get(i).getCodigo() == autor.getCodigo()){
@@ -14,8 +18,7 @@ public class Grupo {
             }
         }
         
-        listaAutor.add(autor);
-        return true;
+        return listaAutor.add(autor);
     }
 
     public Autor pesquisaAutor(int codigo){
@@ -36,12 +39,7 @@ public class Grupo {
         return false;
     }
 
-    public String AutoresComLivros(){
-        String aux = "";
-        for(int i=0; i<listaAutor.size(); i++){
-            if(listaAutor.get(i).livros2Mais());
-                aux = aux + "9; " + listaAutor.get(i).getNome() + listaAutor.get(i).getIsbnLivrosEscritos() + "\n";
-        }
-        return aux;
+    public String AutoresComLivros(int i){
+    return listaAutor.get(i).getNome() + listaAutor.get(i).getIsbnLivrosEscritos();
     }
 }

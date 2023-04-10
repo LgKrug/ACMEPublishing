@@ -46,7 +46,8 @@ public class Autor {
     public  boolean adicionaLivro(Livro livro) {
         if (livrosEscritos.contains(livro)) 
             return false;
-        return livrosEscritos.add(livro);
+        else
+            return livrosEscritos.add(livro);
     }
 
     public ArrayList<Livro> pesquisaLivros() {

@@ -24,6 +24,10 @@ public class Livro {
         return ano;
     }
 
+    public ArrayList<Autor> getAutorList() {
+        return autores;
+    }
+
     public boolean adicionaAutor(Autor autor){
         if(autores.contains(autor)) 
             return false;
@@ -33,12 +37,8 @@ public class Livro {
         }
     }
 
-    public String AutoresToString(){
-        String aux = "7; " + getIsbn() + "; ";
-        for(int i =0; i < autores.size(); i++){
-            aux = aux + autores.get(i).getNome();
-        }
-        return aux;
+    public String AutoresToString(int i ){
+    return  autores.get(i).getNome();
     }
 
     public boolean Autores2Mais() {
