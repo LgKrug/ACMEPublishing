@@ -15,7 +15,3 @@
 9;Thiago Nascimento Rodrigues;9786556901282;9786556900216;
 10;9786556901282;Estrutura de dados em Java;2021
 10;9781119851196;Concepts and semantics of programming languages 2: modular and object-oriented constructs with Ocaml, Python, C++, Ada and Java;2021
-=====Menu=====
-[1] Cadastrar um novo autor e livro correspondente.
-[2] Mostrar todos os autores cadastrados e livros correspondentes.
-[0] Sair do sistema.

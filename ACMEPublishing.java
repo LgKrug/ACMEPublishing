@@ -5,6 +5,8 @@ import java.io.PrintStream;
 import java.nio.charset.Charset;
 import java.util.Locale;
 import java.util.Scanner;
+import java.io.FileOutputStream;
+import java.io.FileDescriptor;
 
 import javax.management.openmbean.OpenDataException;
 
@@ -96,6 +98,9 @@ public class ACMEPublishing {
 
         
         do{
+            in = new Scanner(System.in);
+            PrintStream out = new PrintStream(new FileOutputStream(FileDescriptor.out));
+            System.setOut(out);
             menu.executar();
             opcao = in.nextInt();
 
@@ -107,8 +112,12 @@ public class ACMEPublishing {
                     isbn = in.nextLine();
                     cadastraAutor(codigo, nome, isbn);
                     break;
+
+                case 2: 
+                    mostraAutoresELivros();
+                    break;
             }
-        }while(opcao == 0);
+        }while(opcao != 0);
     }
 
     public void cadastraLivros(String isbn, String titulo, int ano){
@@ -125,11 +134,12 @@ public class ACMEPublishing {
     public void cadastraAutor(int codigo, String nome, String isbn) {
        
             Autor autor = new Autor(codigo,nome,biblioteca.pesquisaLivro(isbn));
-
-            if(grupo.cadastraAutor(autor)){
-                biblioteca.pesquisaLivro(isbn).adicionaAutor(autor);
-            System.out.println("3;" + autor.getCodigo() + ";" + autor.getNome() + ";" + isbn);
-        }
+            if(biblioteca.livroExiste(isbn)){
+                if(grupo.cadastraAutor(autor)){
+                    biblioteca.pesquisaLivro(isbn).adicionaAutor(autor);
+                    System.out.println("3;" + autor.getCodigo() + ";" + autor.getNome() + ";" + isbn);
+                }
+            }
     }
 
     public void mostraAutoresCadastrados(){
@@ -191,5 +201,13 @@ public class ACMEPublishing {
         for(int i=0; i<biblioteca.pesquisaLivro(ano).size(); i++) {
             System.out.println("10;" + biblioteca.livrosNoAno(ano, i));
         }
+    }
+
+    public void mostraAutoresELivros(){
+            for(int i=0; i<grupo.getListaAutor().size(); i++) {
+                for(int j = 0; j<grupo.getListaAutor().get(i).getLivros().size(); j++) {
+                    System.out.println(grupo.pesquisaAutor(grupo.getListaAutor().get(i).getCodigo()).livroToString(j));
+            }
+            }
     }
 }
