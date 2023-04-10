@@ -40,6 +40,6 @@ public class Grupo {
     }
 
     public String AutoresComLivros(int i){
-    return listaAutor.get(i).getNome() + listaAutor.get(i).getIsbnLivrosEscritos();
+    return listaAutor.get(i).getNome() + ";" + listaAutor.get(i).getIsbnLivrosEscritos();
     }
 }

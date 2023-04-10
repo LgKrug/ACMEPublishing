@@ -60,11 +60,7 @@ public class Biblioteca {
         return listaLivro.get(i).getTitulo();
     }
 
-    public String livrosNoAno(int ano) {
-        String aux = "";
-        for(int i=0; i<pesquisaLivro(ano).size(); i++) {
-            aux = aux + "10; " + pesquisaLivro(ano).get(i).getIsbn() + "; " + pesquisaLivro(ano).get(i).getAno() + "; " + pesquisaLivro(ano).get(i).getAno() + "\n";
-    }
-    return aux;
+    public String livrosNoAno(int ano, int i) {
+        return pesquisaLivro(ano).get(i).getIsbn() + ";" + pesquisaLivro(ano).get(i).getTitulo() + ";" + pesquisaLivro(ano).get(i).getAno();
     }
 }

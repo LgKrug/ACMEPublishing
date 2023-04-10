@@ -37,7 +37,7 @@ public class Autor {
     public String getIsbnLivrosEscritos() {
         String aux = "";
         for( int i=0; i<livrosEscritos.size(); i++){
-            aux = aux  + livrosEscritos.get(i).getIsbn() + "; ";
+            aux = aux  + livrosEscritos.get(i).getIsbn() + ";";
         }
 
         return aux;
@@ -55,7 +55,7 @@ public class Autor {
     }
 
     public String livroToString(int i){
-        return getCodigo() + " " + getNome() + " " + livrosEscritos.get(i).getIsbn() + " " + livrosEscritos.get(i).getTitulo() + " " + livrosEscritos.get(i).getAno();
+        return getCodigo() + ";" + getNome() + ";" + livrosEscritos.get(i).getIsbn() + ";" + livrosEscritos.get(i).getTitulo() + ";" + livrosEscritos.get(i).getAno();
     }
     
     public boolean livros2Mais() {
